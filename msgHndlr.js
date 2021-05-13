@@ -73,7 +73,7 @@ module.exports = msgHandler = async (client, message) => {
     };
 
     const mess = {
-      wait: "gaand khuja 2 min",
+      wait: "with karo thoda",
       error: {
         St: "[❗] Write *!sticker* either in the caption of an image/gif or reply to an image/gif with the command.",
         Qm: "[❗] Some error occured, maybe the theme is not available!",
@@ -139,7 +139,6 @@ module.exports = msgHandler = async (client, message) => {
       return;
     switch (command) {
       case "!sticker":
-      case "!stiker":
       case "!st":
         let metadata = { author: "", pack: "" };
         if (args.includes("wname") || args.includes("withname")) {
@@ -209,85 +208,106 @@ module.exports = msgHandler = async (client, message) => {
           client.reply(chatId, mess.error.St, id);
         }
         break;
-      // case "!texttospeech":
-      // case "!tts":
-      //   if (args.length === 1)
-      //     return client.reply(
-      //       chatId,
-      //       "Syntax *!tts [en, hi, jp,..] [text]*, contoh *!tts en Hello*\nwhere en=english, hi=hindi, jp=japanese, etc."
-      //     );
-      //   const tts = require("node-gtts");
-      //   const dataText = body.slice(8);
-      //   if (dataText === "") return client.reply(chatId, "Didn't get you", id);
-      //   if (dataText.length > 500)
-      //     return client.reply(chatId, "Text is too long!", id);
-      //   var dataBhs = args[1].toLowerCase();
-      //   try {
-      //     tts2 = tts(dataBhs);
-      //     tts2.save("./media/tts/res.mp3", dataText, function () {
-      //       client.sendPtt(chatId, "./media/tts/res.mp3", id);
-      //     });
-      //   } catch (err) {
-      //     console.log(message);
-      //     await client.reply(chatId, err, id);
-      //     return;
-      //   }
-      //   break;
-      case "!nh":
-        //if (isGroupMsg) return client.reply(chatId, 'Sorry this command for private chat only!', id)
-        if (args.length === 2) {
-          const nuklir = body.split(" ")[1];
-          client.reply(chatId, mess.wait, id);
-          const cek = await nhentai.exists(nuklir);
-          if (cek === true) {
-            try {
-              const api = new API();
-              const pic = await api.getBook(nuklir).then((book) => {
-                return api.getImageURL(book.cover);
-              });
-              const dojin = await nhentai.getDoujin(nuklir);
-              const { title, details, link } = dojin;
-              const { parodies, tags, artists, groups, languages, categories } =
-                await details;
-              var teks = `*Title* : ${title}\n\n*Parodies* : ${parodies}\n\n*Tags* : ${tags.join(
-                ", "
-              )}\n\n*Artists* : ${artists.join(
-                ", "
-              )}\n\n*Groups* : ${groups.join(
-                ", "
-              )}\n\n*Languages* : ${languages.join(
-                ", "
-              )}\n\n*Categories* : ${categories}\n\n*Link* : ${link}`;
-              //exec('nhentai --id=' + nuklir + ` -P mantap.pdf -o ./hentong/${nuklir}.pdf --format `+ `${nuklir}.pdf`, (error, stdout, stderr) => {
-              client.sendFileFromUrl(chatId, pic, "hentod.jpg", teks, id);
-              //client.sendFile(chatId, `./hentong/${nuklir}.pdf/${nuklir}.pdf.pdf`, then(() => `${title}.pdf`, '', id)).catch(() =>
-              //client.sendFile(chatId, `./hentong/${nuklir}.pdf/${nuklir}.pdf.pdf`, `${title}.pdf`, '', id))
-              /*if (error) {
-                                console.log('error : '+ error.message)
-                                return
-                            }
-                            if (stderr) {
-                                console.log('stderr : '+ stderr)
-                                return
-                            }
-                            console.log('stdout : '+ stdout)*/
-              //})
-            } catch (err) {
-              client.reply(
-                chatId,
-                "[❗] Something went wrong, maybe the sauce is wrong",
-                id
-              );
-            }
-          } else {
-            client.reply(chatId, "[❗] Wrong sauce!");
-          }
-        } else {
+      case "!abuse": {
+        client.reply(chatId, "chal bsdk, " + args[1], id);
+        client.reply(chatId, "chal mg, " + args[1], id);
+        break;
+      }
+      case "!love": {
+        client.reply(chatId, "Hey " + args[1] + ", I love you ❤️", id);
+        client.sendText(chatId, "Date pe chalogi ? 😃 ");
+        break;
+      }
+      case "!taarif":
+        {
           client.reply(
             chatId,
-            "[ WRONG ] Send command *!nh [sauce]*, for detailed description of commands checkout *!readme*"
+            "Main tereko harami samjhta tha,\nPar tu toh dev maanus nikla :'), " +
+              args[1],
+            id
           );
         }
+        break;
+
+        // case "!texttospeech":
+        // case "!tts":
+        //   if (args.length === 1)
+        //     return client.reply(
+        //       chatId,
+        //       "Syntax *!tts [en, hi, jp,..] [text]*, contoh *!tts en Hello*\nwhere en=english, hi=hindi, jp=japanese, etc."
+        //     );
+        //   const tts = require("node-gtts");
+        //   const dataText = body.slice(8);
+        //   if (dataText === "") return client.reply(chatId, "Didn't get you", id);
+        //   if (dataText.length > 500)
+        //     return client.reply(chatId, "Text is too long!", id);
+        //   var dataBhs = args[1].toLowerCase();
+        //   try {
+        //     tts2 = tts(dataBhs);
+        //     tts2.save("./media/tts/res.mp3", dataText, function () {
+        //       client.sendPtt(chatId, "./media/tts/res.mp3", id);
+        //     });
+        //   } catch (err) {
+        //     console.log(message);
+        //     await client.reply(chatId, err, id);
+        //     return;
+        //   }
+        //   break;
+        // case "!nh":
+        //   //if (isGroupMsg) return client.reply(chatId, 'Sorry this command for private chat only!', id)
+        //   if (args.length === 2) {
+        //     const nuklir = body.split(" ")[1];
+        //     client.reply(chatId, mess.wait, id);
+        //     const cek = await nhentai.exists(nuklir);
+        //     if (cek === true) {
+        //       try {
+        //         const api = new API();
+        //         const pic = await api.getBook(nuklir).then((book) => {
+        //           return api.getImageURL(book.cover);
+        //         });
+        //         const dojin = await nhentai.getDoujin(nuklir);
+        //         const { title, details, link } = dojin;
+        //         const { parodies, tags, artists, groups, languages, categories } =
+        //           await details;
+        //         var teks = `*Title* : ${title}\n\n*Parodies* : ${parodies}\n\n*Tags* : ${tags.join(
+        //           ", "
+        //         )}\n\n*Artists* : ${artists.join(
+        //           ", "
+        //         )}\n\n*Groups* : ${groups.join(
+        //           ", "
+        //         )}\n\n*Languages* : ${languages.join(
+        //           ", "
+        //         )}\n\n*Categories* : ${categories}\n\n*Link* : ${link}`;
+        //         //exec('nhentai --id=' + nuklir + ` -P mantap.pdf -o ./hentong/${nuklir}.pdf --format `+ `${nuklir}.pdf`, (error, stdout, stderr) => {
+        //         client.sendFileFromUrl(chatId, pic, "hentod.jpg", teks, id);
+        //         //client.sendFile(chatId, `./hentong/${nuklir}.pdf/${nuklir}.pdf.pdf`, then(() => `${title}.pdf`, '', id)).catch(() =>
+        //         //client.sendFile(chatId, `./hentong/${nuklir}.pdf/${nuklir}.pdf.pdf`, `${title}.pdf`, '', id))
+        //         /*if (error) {
+        //                           console.log('error : '+ error.message)
+        //                           return
+        //                       }
+        //                       if (stderr) {
+        //                           console.log('stderr : '+ stderr)
+        //                           return
+        //                       }
+        //                       console.log('stdout : '+ stdout)*/
+        //         //})
+        //       } catch (err) {
+        //         client.reply(
+        //           chatId,
+        //           "[❗] Something went wrong, maybe the sauce is wrong",
+        //           id
+        //         );
+        //       }
+        //     } else {
+        //       client.reply(chatId, "[❗] Wrong sauce!");
+        //     }
+        //   } else {
+        //     client.reply(
+        //       chatId,
+        //       "[ WRONG ] Send command *!nh [sauce]*, for detailed description of commands checkout *!readme*"
+        //     );
+        //   }
         break;
       case "!sauce":
         if (
@@ -597,11 +617,22 @@ module.exports = msgHandler = async (client, message) => {
           "Meow meow "
         );
         break;
+      case "!celeb":
+      case "!toki":
+      case "!bj":
+      case "!wild":
+      case "!moan":
+      case "!milf":
+      case "!teen":
+      case "!tdrop":
+      case "!nsfwgif":
+      case "!ass":
       case "!meme":
       case "!wholesome":
       case "!dank":
       case "!nsfw":
       case "!porn":
+      case "!amoled":
       case "!hentai":
       case "!nsfwfunny":
         let subr = "";
@@ -616,6 +647,50 @@ module.exports = msgHandler = async (client, message) => {
           if (!isNsfw && isGroupMsg)
             return client.reply(chatId, "NSFW not enabled in this group", id);
           subr = "pornpics";
+        } else if (command == "!bj") {
+          if (!isNsfw && isGroupMsg)
+            return client.reply(chatId, "NSFW not enabled in this group", id);
+          subr = "GirlsFinishingTheJob";
+        } else if (command == "!wild") {
+          if (!isNsfw && isGroupMsg)
+            return client.reply(chatId, "NSFW not enabled in this group", id);
+          subr = "PetiteGoneWild";
+        } else if (command == "!moan") {
+          if (!isNsfw && isGroupMsg)
+            return client.reply(chatId, "NSFW not enabled in this group", id);
+          subr = "holdthemoan";
+        } else if (command == "!celeb") {
+          if (!isNsfw && isGroupMsg)
+            return client.reply(chatId, "NSFW not enabled in this group", id);
+          subr = "CelebGroped";
+        } else if (command == "!ass") {
+          if (!isNsfw && isGroupMsg)
+            return client.reply(chatId, "NSFW not enabled in this group", id);
+          subr = "ass";
+        } else if (command == "!milf") {
+          if (!isNsfw && isGroupMsg)
+            return client.reply(chatId, "NSFW not enabled in this group", id);
+          subr = "milf";
+        } else if (command == "!toki") {
+          if (!isNsfw && isGroupMsg)
+            return client.reply(chatId, "NSFW not enabled in this group", id);
+          subr = "happyembarrassedgirls";
+        } else if (command == "!amoled") {
+          if (!isNsfw && isGroupMsg)
+            return client.reply(chatId, "NSFW not enabled in this group", id);
+          subr = "amoledbackgrounds";
+        } else if (command == "!nsfwgif") {
+          if (!isNsfw && isGroupMsg)
+            return client.reply(chatId, "NSFW not enabled in this group", id);
+          subr = "NSFW_GIF ";
+        } else if (command == "!tdrop") {
+          if (!isNsfw && isGroupMsg)
+            return client.reply(chatId, "NSFW not enabled in this group", id);
+          subr = "tittydrop";
+        } else if (command == "!teen") {
+          if (!isNsfw && isGroupMsg)
+            return client.reply(chatId, "NSFW not enabled in this group", id);
+          subr = "legalteens";
         } else if (command == "!hentai") {
           if (!isNsfw && isGroupMsg)
             return client.reply(chatId, "NSFW not enabled in this group", id);
@@ -631,6 +706,7 @@ module.exports = msgHandler = async (client, message) => {
         const { postlink, title, subreddit, url, nsfw, spoiler } =
           response.data;
         client.sendFileFromUrl(chatId, `${url}`, "meme.jpg", `${title}`, id);
+        client.reply(chatId, "ruk jaa, tujhe bhi deta hun...", id);
         break;
       case "!togglensfw":
         if (!isGroupMsg) return client.reply(chatId, mess.error.Gp, id);
@@ -662,9 +738,9 @@ module.exports = msgHandler = async (client, message) => {
           info
         );
         break;
-      case "!snk":
-        client.reply(chatId, snk, id);
-        break;
+      // case "!snk":
+      //   client.reply(chatId, snk, id);
+      //   break;
       default:
         if (!isOwner && command.startsWith("!"))
           client.reply(
@@ -680,7 +756,7 @@ module.exports = msgHandler = async (client, message) => {
           else {
             if (!isGroupMsg) return client.reply(chatId, mess.error.Gp, id);
             if (args.length === 1)
-              return client.reply(chatId, "Write enable or disable!", id);
+              return client.reply(chatId, "Write enable or disable", id);
             if (args[1].toLowerCase() === "enable") {
               enabledgrps.push(chatId);
               fs.writeFileSync(
