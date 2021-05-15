@@ -73,7 +73,7 @@ module.exports = msgHandler = async (client, message) => {
     };
 
     const mess = {
-      wait: "with karo thoda",
+      wait: "wait karo thoda",
       error: {
         St: "[❗] Write *!sticker* either in the caption of an image/gif or reply to an image/gif with the command.",
         Qm: "[❗] Some error occured, maybe the theme is not available!",
@@ -209,8 +209,118 @@ module.exports = msgHandler = async (client, message) => {
         }
         break;
       case "!abuse": {
-        client.reply(chatId, "chal bsdk, " + args[1], id);
-        client.reply(chatId, "chal mg, " + args[1], id);
+        if (args.length == 2) {
+          client.reply(chatId, "chal bsdk, " + args[1], id);
+          client.reply(chatId, "chal mc, " + args[1], id);
+          client.reply(chatId, "chal gamdu, " + args[1], id);
+          break;
+        }
+        client.sendText(
+          chatId,
+          "use !abuse command with one argument\n*Example : !abuse John*",
+          id
+        );
+        break;
+      }
+      case "!fo": {
+        //use case : !fo to from in eng
+        if (args.length == 3) {
+          const link =
+            "https://foaas.com/off/" +
+            args[1] +
+            "/" +
+            args[2] +
+            "?shoutcloud&i18n=en";
+          client.sendText(chatId, link, id);
+          // client.reply(chatId, "chal mc, " + args[1], id);
+          // client.reply(chatId, "chal gamdu, " + args[1], id);
+          break;
+        }
+        client.sendText(
+          chatId,
+          "use !fo command with two args\n*Example : !fo <to> <from>*",
+          id
+        );
+        break;
+      }
+      case "!ig": {
+        if (args.length == 2) {
+          client.reply(
+            chatId,
+            "https://www.captureinsta.com/reels_downloader?search=" + args[1],
+            id
+          );
+
+          client.reply(
+            chatId,
+            "TAP ON THE LINK\n\nClick on the Download Button",
+            id
+          );
+
+          break;
+        }
+        client.sendText(
+          chatId,
+          "use !ig command with one reel-link\n*Example : !ig reel-link*",
+          id
+        );
+        break;
+      }
+      case "!music": {
+        if (args.length == 2) {
+          client.reply(chatId, "https://bhadoomusic.com/?song=" + args[1], id);
+
+          client.sendText(
+            chatId,
+            "TAP ON THE LINK\n\nClick on the Download Button",
+            id
+          );
+
+          break;
+        }
+        client.sendText(
+          chatId,
+          "use !jioMusic command with one song name\n*Example : !jioMusic zaroorat*",
+          id
+        );
+        break;
+      }
+      case "!yt": {
+        if (args.length == 2) {
+          var a = args[1];
+          var b = "pp";
+          var position = 19;
+          var videoLink = [a.slice(0, position), b, a.slice(position)].join("");
+          var short = "https://tinyurl.com/api-create.php?url=" + videoLink;
+          client.sendFileFromUrl(chatId, short, id);
+          client.reply(
+            chatId,
+            "THIS TEXT FILE CONTAINS THE LINK TO THE VIDEO",
+            id
+          );
+          break;
+        }
+        client.sendText(
+          chatId,
+          "use !yt command with one youtube link\n*Example : !yt https://www.youtube.com/watch?v=jIFPoUTQZG8* \n\nNote: Copy paste the whole youtube url including https://",
+          id
+        );
+        break;
+      }
+
+      case "!praise": {
+        if (args.length == 2) {
+          client.sendTextWithMentions(chatId, "Good Job, " + args[1], id);
+          client.sendTextWithMentions(chatId, "Keep it up, " + args[1], id);
+          client.sendTextWithMentions(chatId, "Saabash, " + args[1], id);
+
+          break;
+        }
+        client.sendText(
+          chatId,
+          "use !praise command with one argument\n*Example : !abuse John*",
+          id
+        );
         break;
       }
       case "!love": {
@@ -218,17 +328,123 @@ module.exports = msgHandler = async (client, message) => {
         client.sendText(chatId, "Date pe chalogi ? 😃 ");
         break;
       }
-      case "!taarif":
-        {
-          client.reply(
+      case "!pj": {
+        const res = await axios.get(
+          "https://official-joke-api.appspot.com/random_joke"
+        );
+        const { type, setup, punchline } = res.data;
+        client.sendText(chatId, `${type + " joke:"}`);
+        client.sendText(chatId, `${setup}`);
+        client.sendText(chatId, `${punchline}`);
+        break;
+      }
+      case "!insult": {
+        if (args.length == 2) {
+          const res = await axios.get(
+            "https://evilinsult.com/generate_insult.php?lang=en&type=json"
+          );
+          const { insult } = res.data;
+          client.sendTextWithMentions(
             chatId,
-            "Main tereko harami samjhta tha,\nPar tu toh dev maanus nikla :'), " +
-              args[1],
+            "This one is for you :" + args[1],
+            id
+          );
+          client.sendText(chatId, `${insult}`);
+          break;
+        }
+        client.sendText(
+          chatId,
+          "use !insult command with one argument\n*Example : !insult @withMentions*",
+          id
+        );
+        break;
+      }
+      case "!yn": {
+        const res = await axios.get("https://yesno.wtf/api");
+        const { answer, image } = res.data;
+        client.reply(chatId, `${answer}`, id);
+        break;
+      }
+      case "!mcu": {
+        const res = await axios.get("https://www.whenisthenextmcufilm.com/api");
+        const { poster_url, title, release_date } = res.data;
+        client.sendFileFromUrl(
+          chatId,
+          `${poster_url}`,
+          "poster.jpg",
+          `Title : ${title}\nRelease Date : ${release_date}            
+            `
+        );
+        client.sendText(
+          chatId,
+          "Check out the link for more upcoming MCU Movies and TV Shows...\nhttps://www.whenisthenextmcufilm.com/",
+          id
+        );
+        break;
+      }
+      case "!spam":
+        {
+          if (args.length == 2 && args.includes("y")) {
+            client.reply(chatId, "Spam Bot Activating in..", id);
+            client.sendText(chatId, "5", id);
+            client.sendText(chatId, "4", id);
+            client.sendText(chatId, "3", id);
+            client.sendText(chatId, "2", id);
+            client.sendText(chatId, "1", id);
+            client.sendText(chatId, "*BOOOM*", id);
+            for (var i = 0; i < 10; i++) {
+              client.sendText(chatId, "Abhi mazza aayeg na bhiddu", id);
+              client.sendText(chatId, "tera to game bajana padega", id);
+              client.sendText(
+                chatId,
+                "Utha re le Baba…Utha le… Mere ko nahi re…In dono ko utha le…",
+                id
+              );
+              client.sendText(chatId, "Ye Babu Rao ka Style Hai…", id);
+              client.sendText(
+                chatId,
+                "Agar subah subah sandaas jana hai toh singer banna padega…",
+                id
+              );
+              client.sendText(
+                chatId,
+                "Jaan pehchaan nahi kaise uthaunga… Kam se kam 40-50 kilo ka wazan hoga",
+                id
+              );
+              client.sendText(
+                chatId,
+                "Woh mein mast tel mein fry karke, woh mein kha gaya!",
+                id
+              );
+              client.sendText(
+                chatId,
+                "Arey nai dekha re! Uske dekhne se pehle hi maine phatt se dhoti pehen liya!",
+                id
+              );
+              client.sendText(chatId, "Khopdi tod saale ka…khopdi tod", id);
+              client.sendText(chatId, "Yeh le mera samsoong ka number", id);
+              client.sendText(chatId, "Tuu jaaa naa", id);
+              client.sendText(
+                chatId,
+                "Aurat Ka Chakar babu bhaya aurat ka chakar",
+                id
+              );
+              client.sendText(
+                chatId,
+                "ek kaam kar 50 Rupay kaat over acting ke",
+                id
+              );
+              client.sendText(chatId, "Rakh Teri Maa Ki Rakh", id);
+            }
+            client.sendText(chatId, "*Spam Bot Deactivated*", id);
+            break;
+          }
+          client.sendText(
+            chatId,
+            "type *!spam y* only to acivate.\nThere is no where going back after activating",
             id
           );
         }
-        break;
-
         // case "!texttospeech":
         // case "!tts":
         //   if (args.length === 1)

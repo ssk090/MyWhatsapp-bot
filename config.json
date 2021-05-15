@@ -2,5 +2,6 @@
 	"ownerName": "Shiv",
 	"removeBgAPIKey": "mnkdVkE79RnhHugbxKgsDVAP",
 	"enableInGroups": true,
-	"allowDelete": false
+	"allowDelete": false,
+	"useChrome":true
 }
