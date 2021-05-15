@@ -1,24 +1,8 @@
-<p align="center">
-<img src="https://github.com/NeerajHazarika/Whatsapp-bot/blob/master/lib/neeraj%20animated.jpg" width="128" height="128"/>
-</p>
-<p align="center">
-<a href="#"><img title="Whatsapp-Bot" src="https://img.shields.io/badge/Whatsapp Bot-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
-</p>
-<p align="center">
-<a href="https://github.com/NeerajHazarika"><img title="Author" src="https://img.shields.io/badge/Author-Neeraj Hazarika-red.svg?style=for-the-badge&logo=github"></a>
-</p>
-<p align="center">
-<a href="https://github.com/NeerajHazarika/followers"><img title="Followers" src="https://img.shields.io/github/followers/NeerajHazarika?color=blue&style=flat-square"></a>
-<a href="https://github.com/NeerajHazarika/whatsapp-bot/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/NeerajHazarika/whatsapp-bot?color=red&style=flat-square"></a>
-<a href="https://github.com/NeerajHazarika/whatsapp-bot/network/members"><img title="Forks" src="https://img.shields.io/github/forks/NeerajHazarika/whatsapp-bot?color=red&style=flat-square"></a>
-<a href="https://github.com/NeerajHazarika/whatsapp-bot/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/NeerajHazarika/whatsapp-bot?label=Watchers&color=blue&style=flat-square"></a>
-<a href="#"><img title="UNMAINTENED" src="https://img.shields.io/badge/UNMAINTENED-YES-blue.svg"</a>
-</p>
 
 ## Clone this project
 
 ```bash
-> git clone https://github.com/NeerajHazarika/whatsapp-bot
+> git clone https://github.com/ssk090/MyWhatsapp-bot
 ```
 
 ## Install the dependencies:
@@ -31,7 +15,7 @@ you've just cloned!!
 ```
 
 ### Usage
-Before running this script, first edit [this section](https://github.com/NeerajHazarika/whatsapp-bot/blob/master/msgHndlr.js#L101) with your WhatsApp number, remember your WhatsApp number!  Not a bot number, then
+Before running this script, first edit the code with your WhatsApp number, remember your WhatsApp number!  Not a bot number, then
 ```bash
 > npm start
 ```
@@ -49,9 +33,7 @@ Before running this script, first edit [this section](https://github.com/NeerajH
 | Downloader |                     Feature                |
 | :------------: | :---------------------------------------------: |
 |       ✅        |   YouTube mp3/mp4 Downloader                    |
-|       ❌        |   Doujin Downloader         |
 |       ✅        |   Instagram Video/Image Downloader                  |
-|       ✅        |   Facebook Video Downloader                  |
 
 
 | Other  |                     Feature                     |
@@ -70,29 +52,6 @@ Before running this script, first edit [this section](https://github.com/NeerajH
 |      And        |   Others...                     |
 
 
-| Group Only  |                     Feature                     |
-| :------------: | :---------------------------------------------: |
-|       ✅        |   Promote User                  |
-|       ✅        |   Demote User                   |
-|       ✅        |   Kick User                     |
-|       ✅        |   Add User                      |
-|       ✅        |   Mention All User              |
-|       ✅        |   Get link group                |
-|       ✅        |   Get Admin list                |
-|       ✅        |   Get owner group               |
-|       ✅        |   enable or disable nsfw command|
-|       ✅        |   enable or disable welcome feature|
-
-
-| Owner Group Only  |              Feature                |
-| :------------: | :---------------------------------------------: |
-|       ✅        |   Kick All Member Group                 |
-
-| Owner Bot Only  |              Feature                |
-| :------------: | :---------------------------------------------: |
-|       ✅        |   leave all group                   |
-|       ✅        |   clear all message                 |
-|       ✅        |   Broadcast                      |
 
 
 ### Troubleshooting
@@ -104,10 +63,3 @@ Fix Stuck on linux, install google chrome stable:
 > wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 > sudo apt install ./google-chrome-stable_current_amd64.deb
 ```
-## Special Thanks to
-* [`open-wa/wa-automate-nodejs`](https://github.com/open-wa/wa-automate-nodejs)
-* [`YogaSakti/imageToSticker`](https://github.com/YogaSakti/imageToSticker)
-* [`SomnathDas/Whatsapp-Botto-Re`](https://github.com/SomnathDas/Whatsapp-Botto-Re)
-
-### Donate
-* [`Saweria`](https://saweria.co/donate/mhankbarbar)
